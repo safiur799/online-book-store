@@ -9,6 +9,7 @@ function App() {
       <h1>Online book api</h1>
       <Navbar />
       <Switch>
+        <Route path="/home"></Route>
         <Route path="/books" exact>
           <SearchBar />
         </Route>
