@@ -1,9 +1,10 @@
 import React from "react";
 import { useEffect, useState } from "react";
-
+import BookShow from "./BookShow";
 function SearchBar() {
   const [book, setBook] = useState([]);
   const [page, setPage] = useState(0);
+  const [searchMovie, setSeachMovie] = useState("");
   useEffect(() => {
     getBooks();
   }, []);
@@ -16,11 +17,33 @@ function SearchBar() {
         setBook(data);
       });
   }
+  const changeHandler = (e) => {
+    setSeachMovie(e.target.value);
+  };
 
   return (
     <div>
-      <input type="text" placeholder="search book " />
+      <input type="text" placeholder="search book " onChange={changeHandler} />
       <button type="submit">search</button>
+      <div>
+        {book
+          .filter((val) => {
+            if (searchMovie === "") {
+              return val;
+            } else if (
+              val.title.toLowerCase().includes(searchMovie.toLowerCase())
+            ) {
+              return val;
+            }
+          })
+          .map((el) => (
+            <BookShow
+              title={el.title}
+              description={el.description}
+              author={el.author}
+            />
+          ))}
+      </div>
     </div>
   );
 }
