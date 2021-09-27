@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import BookShow from "./BookShow";
+import { Link } from "react-router-dom";
 function SearchBar() {
   const [book, setBook] = useState([]);
   const [page, setPage] = useState(0);
@@ -37,11 +38,14 @@ function SearchBar() {
             }
           })
           .map((el) => (
-            <BookShow
-              title={el.title}
-              description={el.description}
-              author={el.author}
-            />
+            <Link to={`/books/${el.title}`}>
+              {" "}
+              <BookShow
+                title={el.title}
+                description={el.description}
+                author={el.author}
+              />
+            </Link>
           ))}
       </div>
     </div>

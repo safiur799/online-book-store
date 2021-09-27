@@ -6,7 +6,7 @@ function BookDetails() {
   return (
     <div>
       <h1>books details</h1>
-      <h1>{params.bookId}</h1>
+      <h1>{params.id}</h1>
     </div>
   );
 }
